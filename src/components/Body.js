@@ -1,5 +1,5 @@
 import ResturantCard from "./ResturantCard";
-import { restaurant, RESTURANT_API_URL } from "../../constant";
+import { RESTURANT_API_URL } from "../../constant";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -20,11 +20,11 @@ const Body = () => {
   const [filterRestaurantList, setFilterRestaurantList] = useState([]);
 
   useEffect(() => {
-    getResturant();
+    getRestaurant();
   }, []);
 
   //API CALL OF SWIGGY
-  async function getResturant() {
+  async function getRestaurant() {
     const response = await fetch(RESTURANT_API_URL);
     const json = await response.json();
     setFilterRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
